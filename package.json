@@ -4,7 +4,7 @@
   "description": "POST to Server Send Events proxy",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -29,5 +29,9 @@
     "concat-stream": "^1.5.1",
     "minimist": "^1.2.0",
     "sse": "0.0.6"
+  },
+  "devDependencies": {
+    "mocha": "^2.3.4",
+    "supertest": "^1.1.0"
   }
 }
