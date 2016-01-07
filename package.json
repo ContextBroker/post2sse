@@ -1,0 +1,33 @@
+{
+  "name": "post2sse",
+  "version": "0.0.0",
+  "description": "POST to Server Send Events proxy",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/piranna/post2sse.git"
+  },
+  "keywords": [
+    "SSE",
+    "Server",
+    "Send",
+    "Events",
+    "POST",
+    "proxy",
+    "ContextBroker"
+  ],
+  "author": "Jesús Leganés Combarro 'piranna' <piranna@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/piranna/post2sse/issues"
+  },
+  "homepage": "https://github.com/piranna/post2sse#readme",
+  "dependencies": {
+    "concat-stream": "^1.5.1",
+    "minimist": "^1.2.0",
+    "sse": "0.0.6"
+  }
+}
