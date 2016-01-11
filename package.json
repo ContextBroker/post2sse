@@ -4,7 +4,8 @@
   "description": "POST to Server Send Events proxy",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "coveralls": "scripts/coveralls"
   },
   "repository": {
     "type": "git",
@@ -31,7 +32,10 @@
     "sse": "^0.0.6"
   },
   "devDependencies": {
+    "coveralls": "^2.11.6",
+    "jscoverage": "piranna/jscoverage",
     "mocha": "^2.3.4",
+    "mocha-lcov-reporter": "^1.0.0",
     "supertest": "^1.1.0",
     "suppose": "^0.4.0"
   }
