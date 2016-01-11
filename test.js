@@ -1,6 +1,12 @@
+var ifError = require('assert').ifError
+
 var request = require('supertest')
+var suppose = require('suppose')
 
 var post2sse = require('./index.js')
+
+
+const EVENTS_SEPARATOR = '\n\n'
 
 
 it('fail when using an invalid HTTP method', function(done)
@@ -19,15 +25,12 @@ describe('SSE clients', function()
       .expect(403, done)
   })
 
-  xit('register correctly', function(done)
+  it('register correctly', function(done)
   {
     request(post2sse())
       .get('/a')
-      .end(function(err, res)
-      {
-        console.log(err, res)
-      })
-//      .expect(/:ok/, done)
+    .pipe(suppose())
+      .when(':ok'+EVENTS_SEPARATOR, done)
   })
 
   it('fail when trying to register same ID twice', function(done)
@@ -58,7 +61,7 @@ describe('POST notifications', function()
       .expect(404, done)
   })
 
-  xit('forward correctly a notification', function(done)
+  it('forward correctly a notification', function(done)
   {
     var data =
     {
@@ -66,13 +69,16 @@ describe('POST notifications', function()
     }
 
     var proxy = post2sse()
+
     request(proxy)
       .get('/a')
-      .expect(':ok')
-      .expect('data: '+JSON.stringify(data), done)
+    .pipe(suppose())
+      .when(':ok'+EVENTS_SEPARATOR)
+      .when('data: '+JSON.stringify(data)+EVENTS_SEPARATOR, done)
+
     request(proxy)
       .post('/a')
       .send(data)
-      .end()
+      .end(ifError)
   })
 })
